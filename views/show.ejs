@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css">
+    <title><%= weatherData.name %></title>
+</head>
+<body>
+    <main>
+        <h2>Weather for <%= weatherData.name %> </h2>
+        <ul>
+            <li><strong>Temperature:</strong> <%= weatherData.main.temp %> °F</li>
+            <% weatherData.weather.forEach(item => { %>
+            <li><strong>Description:</strong> <%= item.description %></li>
+            <% }) %>
+            <li><strong>Sunrise Time:</strong> <%= moment(weatherData.sys.sunrise * 1000).format("LLLL")%></li>
+            <li><strong>Sunset Time:</strong> <%= moment(weatherData.sys.sunset * 1000).format("LLLL") %></li>
+            <li><strong>Atmospheric Pressure:</strong> <%= weatherData.main.pressure %> hPa</li>
+            <li><strong>Humidity:</strong> <%= weatherData.main.humidity%> %</li>
+        </ul>
+        <a href="/">Back to home!</a>
+    </main>
+</body>
+</html>
